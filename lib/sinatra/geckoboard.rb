@@ -1,3 +1,5 @@
+require 'json'
+
 module Sinatra
   module Geckoboard
 
@@ -12,7 +14,7 @@ module Sinatra
       # @param [String] colour
       # @return [String] the line chart as json string
       def line_chart(values=[], axisx=[], axisy=[], colour="")
-        render_widget ({
+        render_widget({
           "item" => values,
           "settings" => {
             "axisx" => axisx,
@@ -27,10 +29,9 @@ module Sinatra
       # http://support.geckoboard.com/entries/274940-custom-chart-widget-type-definitions
       #
       # @param [Array] values array of hash with: value, label and colour keys
+      # @return [String] the pie chart as json string
       def pie_chart(values=[])
-        render_widget({
-          "item" => values
-        })
+        render_widget "item" => values
       end
 
       protected

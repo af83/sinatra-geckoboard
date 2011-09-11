@@ -12,6 +12,9 @@ Gem::Specification.new do |s|
   s.require_paths                = ["lib"]
   s.rubygems_version             = %q{1.3.7}
   s.add_dependency "sinatra", ">= 1.0"
+  s.add_dependency "json", "~> 1.0"
   s.add_development_dependency "bundler"
+  s.add_development_dependency "minitest", "~> 2.0"
   s.add_development_dependency "rake"
+  s.add_development_dependency "rack-test"
 end
