@@ -44,6 +44,18 @@ module Sinatra
         render_widget "item" => values
       end
 
+      # Render a geck-o-meter widget
+      # Set content type as json
+      # http://support.geckoboard.com/entries/274940-custom-chart-widget-type-definitions
+      #
+      # @param [String] values
+      # @param [Hash] max Hash with text and value keys
+      # @param [Hash] min Hash with text and value keys
+      # @return [String] the geck-o-meter chart as json string
+      def geck_o_meter(value, max, min)
+        render_widget "item" => value, "max" => max, "min" => min
+      end
+
       protected
       def render_widget(widget)
         content_type :json

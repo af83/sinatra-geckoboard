@@ -39,7 +39,7 @@ class App < Sinatra::Base
 end
 ```
 
-### pie_chart
+### Pie Chart
 
 Render a pie chart widget. You should pass an array of `Hash`. If the key `colour` is ommited, a colour will be generated with the `label` key.
 
@@ -47,12 +47,20 @@ Render a pie chart widget. You should pass an array of `Hash`. If the key `colou
 pie_chart(values)
 ```
 
-### line_chart
+### Line Chart
 
 Render a line_chart widget.
 
 ```ruby
 line_chart(values, axisx, axisy, colour)
+```
+
+### Geck-O-Meter
+
+Render a Geck-O-Meter widget.
+
+```ruby
+geck_o_meter(number, max, min)
 ```
 
 ## License

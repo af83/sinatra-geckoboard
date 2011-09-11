@@ -33,31 +33,40 @@ describe Sinatra::Geckoboard do
     get '/line' do
       line_chart [1, 3], ["value1", "value2"], ["top1", "top2"], "#ff9900"
     end
+
+    get '/geck-o-meter' do
+      geck_o_meter "2", {"text" => "Bruce Lee", "value" => "0"}, {"text"=> "Chuck Norris", "value" => "42"}
+    end
   end
 
   def app
     App
   end
 
-  it "create a pie_chart" do
-    get '/pie'
+  def assert_widget(expected_result)
     last_response.status.must_equal 200
     last_response.headers['Content-Type'].must_equal "application/json"
-    last_response.body.must_equal '{"item":[{"label":"Chuck Norris","value":3,"colour":"#ff9900"},{"label":"Bruce Lee","value":0,"colour":"#ef9900"}]}'
+    last_response.body.must_equal expected_result
+  end
+
+  it "create a pie_chart" do
+    get '/pie'
+    assert_widget '{"item":[{"label":"Chuck Norris","value":3,"colour":"#ff9900"},{"label":"Bruce Lee","value":0,"colour":"#ef9900"}]}'
   end
 
   it "create a pie_chart with a default color" do
     get '/pie2'
-    last_response.status.must_equal 200
-    last_response.headers['Content-Type'].must_equal "application/json"
-    last_response.body.must_equal '{"item":[{"label":"Bruce Lee","value":0,"colour":"#d19e63"}]}'
+    assert_widget '{"item":[{"label":"Bruce Lee","value":0,"colour":"#d19e63"}]}'
   end
 
   it "create a line chart" do
     get '/line'
-    last_response.status.must_equal 200
-    last_response.headers['Content-Type'].must_equal "application/json"
-    last_response.body.must_equal '{"item":[1,3],"settings":{"axisx":["value1","value2"],"axisy":["top1","top2"],"colour":"#ff9900"}}'
+    assert_widget '{"item":[1,3],"settings":{"axisx":["value1","value2"],"axisy":["top1","top2"],"colour":"#ff9900"}}'
+  end
+
+  it "create a geck-o-meter" do
+    get '/geck-o-meter'
+    assert_widget '{"item":"2","max":{"text":"Bruce Lee","value":"0"},"min":{"text":"Chuck Norris","value":"42"}}'
   end
 
   it "create a color in a deterministic way" do
