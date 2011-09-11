@@ -6,7 +6,13 @@ A little [Sinatra](http://www.sinatrarb.com/) extension to expose data nicely to
 
 ## Install
 
-Install with git. No gem available yet.
+Install with Rubygems:
+
+    gem install sinatra-geckoboard
+
+If you use bundler, add it to your Gemfile:
+
+    gem "sinatra-geckoboard", "~>0.1.0"
 
 ## Usage
 
