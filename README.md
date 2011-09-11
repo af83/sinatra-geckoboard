@@ -39,7 +39,7 @@ class App < Sinatra::Base
 end
 ```
 
-## Licence
+## License
 
 MIT License
 
