@@ -14,14 +14,12 @@ module Sinatra
       # @param [String] colour
       # @return [String] the line chart as json string
       def line_chart(values=[], axisx=[], axisy=[], colour="")
-        render_widget({
-          "item" => values,
-          "settings" => {
-            "axisx" => axisx,
-            "axisy" => axisy,
-            "colour" => colour
-          }
-        })
+        render_widget "item" => values,
+                      "settings" => {
+                         "axisx" => axisx,
+                         "axisy" => axisy,
+                         "colour" => colour
+                      }
       end
 
       # Render a pie chart widget
