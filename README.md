@@ -2,7 +2,7 @@
 
 **Work in progress**
 
-A little (Sinatra)[http://www.sinatrarb.com/] extension to expose data nicely to (Geckoboard)[http://www.geckoboard.com/].
+A little [Sinatra](http://www.sinatrarb.com/) extension to expose data nicely to [Geckoboard](http://www.geckoboard.com/).
 
 ## Install
 
