@@ -12,15 +12,14 @@ module Sinatra
       # @param [String] colour
       # @return [String] the line chart as json string
       def line_chart(values=[], axisx=[], axisy=[], colour="")
-        content_type :json
-        {
+        render_widget ({
           "item" => values,
           "settings" => {
             "axisx" => axisx,
             "axisy" => axisy,
             "colour" => colour
           }
-        }.to_json
+        })
       end
 
       # Render a pie chart widget
@@ -29,10 +28,15 @@ module Sinatra
       #
       # @param [Array] values array of hash with: value, label and colour keys
       def pie_chart(values=[])
-        content_type :json
-        {
+        render_widget({
           "item" => values
-        }.to_json
+        })
+      end
+
+      protected
+      def render_widget(widget)
+        content_type :json
+        widget.to_json
       end
     end
 
