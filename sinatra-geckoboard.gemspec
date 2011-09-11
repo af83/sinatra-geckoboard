@@ -1,7 +1,7 @@
 # encoding: utf-8
 Gem::Specification.new do |s|
   s.name                         = 'sinatra-geckoboard'
-  s.version                      = '0.1.0'
+  s.version                      = '0.1.1'
   s.date                         = Time.now.utc.strftime("%Y-%m-%d")
   s.authors                      = "François de Metz"
   s.email                        = "francois.de.metz@af83.com"
