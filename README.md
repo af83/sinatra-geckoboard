@@ -2,7 +2,7 @@
 
 **Work in progress**
 
-A small extension for Sinatra to expose nice data to create nice graph with Geckoboard.
+A little (Sinatra)[http://www.sinatrarb.com/] extension to expose data nicely to (Geckoboard)[http://www.geckoboard.com/].
 
 ## Install
 
