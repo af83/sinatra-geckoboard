@@ -5,10 +5,8 @@ Gem::Specification.new do |s|
   s.date                         = Time.now.utc.strftime("%Y-%m-%d")
   s.authors                      = "François de Metz"
   s.email                        = "francois.de.metz@af83.com"
-  s.description                  =  <<-EOF
-
-EOF
-  s.summary                      = ""
+  s.description                  = "A little Sinatra extension to expose data nicely to Geckoboard."
+  s.summary                      = "A little Sinatra extension to expose data nicely to Geckoboard."
   s.extra_rdoc_files             = %w(README.md)
   s.files                        = Dir["README.md", "Gemfile", "lib/**/*.rb"]
   s.require_paths                = ["lib"]
