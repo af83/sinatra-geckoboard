@@ -39,6 +39,22 @@ class App < Sinatra::Base
 end
 ```
 
+### pie_chart
+
+Render a pie chart widget. You should pass an array of `Hash`. If the key `colour` is ommited, a colour will be generated with the `label` key.
+
+```ruby
+pie_chart(values)
+```
+
+### line_chart
+
+Render a line_chart widget.
+
+```ruby
+line_chart(values, axisx, axisy, colour)
+```
+
 ## License
 
 MIT License

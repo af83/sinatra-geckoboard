@@ -10,6 +10,10 @@ describe Sinatra::Geckoboard do
   class App < Sinatra::Base
     register Sinatra::Geckoboard
 
+    get '/color' do
+      create_color params["string"]
+    end
+
     get '/pie' do
       pie_chart [ { "label" => "Chuck Norris",
                     "value" => 3,
@@ -17,6 +21,12 @@ describe Sinatra::Geckoboard do
                   { "label" => "Bruce Lee",
                     "value" => 0,
                     "colour" => "#ef9900" }
+                ]
+    end
+
+    get '/pie2' do
+      pie_chart [ { "label" => "Bruce Lee",
+                    "value" => 0 }
                 ]
     end
 
@@ -29,15 +39,32 @@ describe Sinatra::Geckoboard do
     App
   end
 
-  it "create apie_chart" do
+  it "create a pie_chart" do
     get '/pie'
     last_response.status.must_equal 200
+    last_response.headers['Content-Type'].must_equal "application/json"
     last_response.body.must_equal '{"item":[{"label":"Chuck Norris","value":3,"colour":"#ff9900"},{"label":"Bruce Lee","value":0,"colour":"#ef9900"}]}'
+  end
+
+  it "create a pie_chart with a default color" do
+    get '/pie2'
+    last_response.status.must_equal 200
+    last_response.headers['Content-Type'].must_equal "application/json"
+    last_response.body.must_equal '{"item":[{"label":"Bruce Lee","value":0,"colour":"#d19e63"}]}'
   end
 
   it "create a line chart" do
     get '/line'
     last_response.status.must_equal 200
+    last_response.headers['Content-Type'].must_equal "application/json"
     last_response.body.must_equal '{"item":[1,3],"settings":{"axisx":["value1","value2"],"axisy":["top1","top2"],"colour":"#ff9900"}}'
+  end
+
+  it "create a color in a deterministic way" do
+    get '/color', "string" => "plop"
+    first = last_response.body
+    first.wont_be_nil
+    get '/color', "string" => "plop"
+    last_response.body.must_equal first
   end
 end
