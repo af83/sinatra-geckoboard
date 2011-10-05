@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require_relative 'spec_helper'
 require "minitest/autorun"
 
 describe Sinatra::Geckoboard do
@@ -45,7 +45,7 @@ describe Sinatra::Geckoboard do
 
   def assert_widget(expected_result)
     last_response.status.must_equal 200
-    last_response.headers['Content-Type'].must_equal "application/json"
+    last_response.headers['Content-Type'].must_equal "application/json;charset=utf-8"
     last_response.body.must_equal expected_result
   end
 
