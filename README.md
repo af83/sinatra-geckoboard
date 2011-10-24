@@ -1,8 +1,8 @@
 # Sinatra Geckoboard
 
-**Work in progress**
-
 A little [Sinatra](http://www.sinatrarb.com/) extension to expose data nicely to [Geckoboard](http://www.geckoboard.com/).
+
+We are using it in production.
 
 ## Install
 
