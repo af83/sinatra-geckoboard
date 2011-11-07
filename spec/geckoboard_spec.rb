@@ -37,6 +37,12 @@ describe Sinatra::Geckoboard do
     get '/geck-o-meter' do
       geck_o_meter "2", {"text" => "Bruce Lee", "value" => "0"}, {"text"=> "Chuck Norris", "value" => "42"}
     end
+
+    get '/rag' do
+      rag({"text" => "Plop", "value" => 1},
+          {"text" => "Plop", "value" => 4},
+          {"text" => "Plop", "value" => 9})
+    end
   end
 
   def app
@@ -67,6 +73,11 @@ describe Sinatra::Geckoboard do
   it "create a geck-o-meter" do
     get '/geck-o-meter'
     assert_widget '{"item":"2","max":{"text":"Bruce Lee","value":"0"},"min":{"text":"Chuck Norris","value":"42"}}'
+  end
+
+  it "create a rag widget" do
+    get '/rag'
+    assert_widget '{"item":[{"text":"Plop","value":1},{"text":"Plop","value":4},{"text":"Plop","value":9}]}'
   end
 
   it "create a color in a deterministic way" do

@@ -56,6 +56,19 @@ module Sinatra
         render_widget "item" => value, "max" => max, "min" => min
       end
 
+      # Render a RAG widget
+      # Set content type as json
+      # http://support.geckoboard.com/entries/274940-custom-chart-widget-type-definitions
+      #
+      # @param [Hash] red
+      # @param [Hash] amber
+      # @param [Hash] green
+      # @return [String] the geck-o-meter chart as json string
+      #
+      def rag(red, amber, green)
+        render_widget "item" => [red, amber, green]
+      end
+
       protected
       def render_widget(widget)
         content_type :json

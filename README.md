@@ -63,6 +63,17 @@ Render a Geck-O-Meter widget.
 geck_o_meter(number, max, min)
 ```
 
+### RAG
+
+Render a RAG widget.
+
+```ruby
+red   = {value: 4, text: 'Plop'}
+amber = {value: 4, text: 'Plop'}
+green = {value: 4, text: 'Plop'}
+rag(red, amber, green)
+```
+
 ## License
 
 MIT License
