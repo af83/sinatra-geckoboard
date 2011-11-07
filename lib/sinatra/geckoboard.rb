@@ -58,15 +58,27 @@ module Sinatra
 
       # Render a RAG widget
       # Set content type as json
-      # http://support.geckoboard.com/entries/274940-custom-chart-widget-type-definitions
+      # http://support.geckoboard.com/entries/231507-custom-widget-type-definitions
       #
       # @param [Hash] red
       # @param [Hash] amber
       # @param [Hash] green
-      # @return [String] the geck-o-meter chart as json string
-      #
+      # @return [String] the rag widget as json string
       def rag(red, amber, green)
         render_widget "item" => [red, amber, green]
+      end
+
+      # Render a number widget
+      # Set content type as json
+      # http://support.geckoboard.com/entries/231507-custom-widget-type-definitions
+      #
+      # @param [Hash] number1
+      # @param [Hash] number2
+      # @return [String] the number widget as jons string
+      def number(number1, number2=nil)
+        values = [number1]
+        values << number2 unless number2.nil?
+        render_widget "item" => values
       end
 
       protected

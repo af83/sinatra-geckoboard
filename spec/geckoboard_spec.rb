@@ -43,6 +43,14 @@ describe Sinatra::Geckoboard do
           {"text" => "Plop", "value" => 4},
           {"text" => "Plop", "value" => 9})
     end
+
+    get '/number' do
+      number({"value" => 5, "text" => "Hello"})
+    end
+
+    get '/number2' do
+      number({"value" => 5, "text" => "Hello"}, {"value" => 8, "text" => "Hello2"})
+    end
   end
 
   def app
@@ -78,6 +86,13 @@ describe Sinatra::Geckoboard do
   it "create a rag widget" do
     get '/rag'
     assert_widget '{"item":[{"text":"Plop","value":1},{"text":"Plop","value":4},{"text":"Plop","value":9}]}'
+  end
+
+  it 'create a number widget' do
+    get '/number'
+    assert_widget '{"item":[{"value":5,"text":"Hello"}]}'
+    get '/number2'
+    assert_widget '{"item":[{"value":5,"text":"Hello"},{"value":8,"text":"Hello2"}]}'
   end
 
   it "create a color in a deterministic way" do

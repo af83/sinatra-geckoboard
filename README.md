@@ -74,6 +74,16 @@ green = {value: 4, text: 'Plop'}
 rag(red, amber, green)
 ```
 
+### Number + optional secondary stat
+
+Render a Number widget.
+
+```ruby
+number1 = {value: 4, text: 'Plop'}
+number2 = {value: 5, text: 'Plop'}
+number(number1[, number2])
+```
+
 ## License
 
 MIT License
